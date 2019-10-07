@@ -27,8 +27,8 @@ requirements:
     - python-avro >=1.8.1,<2.0.0
     - crcmod >=1.7,<2.0
     - dill >=0.3.0,<0.3.1
-    - fastavro >=0.21.4,<0.22  # [py<3]
-    - funcsigs >=1.0.2,<2
+    - fastavro >=0.21.4,<0.22
+    - funcsigs >=1.0.2,<2  # [py<3]
     - pyarrow >=0.12.0,<0.15.0
     - grpcio >=1.12.1,<2
     - python-hdfs >=2.1.0,<3.0.0
