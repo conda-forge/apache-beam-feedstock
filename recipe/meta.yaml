@@ -44,8 +44,9 @@ requirements:
     - python-dateutil >=2.8.0,<3
     - pyvcf >=0.6.8,<0.7.0  # [py<3]
     - six >=1.9,<1.12
-    - typing >=3.7.0,<3.8.0  # [py<38]
-    - typing-extensions >=3.7.0,<3.8.0  # [py<38]
+    # typing and typing-extensions should be limited to py<38.
+    - typing >=3.7.0,<3.8.0  # [py<35]
+    - typing-extensions >=3.7.0,<3.8.0  # [py<35]
     - futures >=3.2.0,<4.0.0  # [py<3]
     - future >=0.16.0,<1.0.0
  
