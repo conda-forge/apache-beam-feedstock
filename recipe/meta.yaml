@@ -1,5 +1,5 @@
 {% set name = "apache-beam" %}
-{% set version = "2.18.0" %}
+{% set version = "2.21.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.zip
-  sha256: f506a2a43cac26d7a737568723a091d46b4837d093a25831f9245f6c0534171b
+  sha256: 9a9738dffbd10a2bd17e186a35ed11ef69202c035419ab33c319c2408e76e133
 
 build:
   number: 0
-  skip: True  # [win]
+  skip: true  # [win]
   script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
@@ -47,7 +47,7 @@ requirements:
     - typing >=3.6.0,<3.7.0  # [py<35]
     - futures >=3.2.0,<4.0.0  # [py<3]
     - future >=0.16.0,<1.0.0
- 
+
 
 test:
   imports:
@@ -57,7 +57,7 @@ test:
     - apache_beam.examples.complete.juliaset
     - apache_beam.examples.complete.juliaset.juliaset
     - apache_beam.examples.cookbook
-    - apache_beam.examples.flink    
+    - apache_beam.examples.flink
     - apache_beam.examples.snippets
     - apache_beam.internal
     - apache_beam.internal.gcp
