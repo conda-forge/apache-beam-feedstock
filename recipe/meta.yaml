@@ -109,12 +109,14 @@ outputs:
         # Try match what's in https://github.com/apache/beam/blob/v{{ version }}/sdks/python/setup.py#L268
         - cachetools >=3.1.0,<5
         - google-apitools >=0.5.31,<0.5.32
+        - google-api-core !=2.8.2,<3
         - google-auth >=1.18.0,<2
         - google-auth-httplib2 >=0.1.0,<0.2.0
         - google-cloud-datastore >=1.8.0,<2
         - google-cloud-pubsub >=0.39.0,<2
         - google-cloud-bigquery >=1.6.0,<3
-        - google-cloud-core >=0.28.1,<2
+        - google-cloud-bigquery-storage >=2.6.3,<2.14
+        - google-cloud-core >=0.28.1,<3
         - google-cloud-bigtable >=0.31.1,<2
         - google-cloud-spanner >=1.13.0,<2
         - grpcio-gcp >=0.2.2,<1
@@ -122,7 +124,7 @@ outputs:
         - google-cloud-language >=1.3.0,<2
         - google-cloud-videointelligence >=1.8.0,<2
         - google-cloud-vision >=0.38.0,<2
-        - google-cloud-recommendations-ai >=0.1.0,<=0.2.0
+        - google-cloud-recommendations-ai >=0.1.0,<0.8.0
     test:
       imports:
         # not sure what test is useful...
