@@ -11,7 +11,7 @@ source:
 
 build:
   skip: true  # [win or py>=310]
-  number: 0
+  number: 1
 
 requirements:
   host:
@@ -113,7 +113,8 @@ outputs:
         - google-auth >=1.18.0,<2
         - google-auth-httplib2 >=0.1.0,<0.2.0
         - google-cloud-datastore >=1.8.0,<2
-        - google-cloud-pubsub >=0.39.0,<2
+        - google-cloud-pubsub >=2.1.0,<3
+        - google-cloud-pubsublite >=1.2.0,<2
         - google-cloud-bigquery >=1.6.0,<3
         - google-cloud-bigquery-storage >=2.6.3,<2.14
         - google-cloud-core >=0.28.1,<3
