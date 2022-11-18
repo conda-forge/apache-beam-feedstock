@@ -32,6 +32,8 @@ outputs:
         - python
         - cython >=0.28.1
         - pip >=19.3.0
+        # required also during setup
+        - numpy >=1.14.3,<1.23.0
       run:
         - python
         - cython >=0.28.1
