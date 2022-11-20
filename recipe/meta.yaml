@@ -18,6 +18,8 @@ build:
 requirements:
   host:
     - python
+    - numpy >=1.14.3,<1.23.0
+    - cython >=0.28.1
   run:
     - python
 
@@ -30,11 +32,11 @@ outputs:
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
         - cython >=0.28.1                        # [build_platform != target_platform]
         - {{ compiler('c') }}
+        - numpy >=1.14.3,<1.23.0                 # [build_platform != target_platform]
       host:
         - python
         - cython >=0.28.1
         - pip >=19.3.0
-        # required also during setup
         - numpy >=1.14.3,<1.23.0
       run:
         - python
