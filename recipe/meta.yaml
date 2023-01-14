@@ -202,6 +202,43 @@ outputs:
       requires:
         - pip
 
+  - name: {{ name }}-with-dataframe
+    requirements:
+      host:
+        - python
+      run:
+        - python
+        - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
+        - pandas >=1.0,<1.5  # [py<310]
+        - pandas >=1.4.3,<1.5  # [py>=310]
+    test:
+      imports:
+        # not sure what test is useful...
+        - apache_beam
+      commands:
+        - pip check
+      requires:
+        - pip
+
+  - name: {{ name }}-with-dask
+    requirements:
+      host:
+        - python
+      run:
+        - python
+        - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
+        - dask >=2022.6
+        - distributed >=2022.6
+    test:
+      imports:
+        # not sure what test is useful...
+        - apache_beam
+      commands:
+        - pip check
+      requires:
+        - pip
+
+
 about:
   home: https://beam.apache.org
   license: Apache-2.0
