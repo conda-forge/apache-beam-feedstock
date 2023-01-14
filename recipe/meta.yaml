@@ -1,5 +1,5 @@
 {% set name = "apache-beam" %}
-{% set version = "2.43.0" %}
+{% set version = "2.44.0" %}
 
 package:
   name: {{ name|lower }}-split
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.zip
-  sha256: f1d4d4495fb661d39a2eff7689c717008d0c708b3311931e829b1f445d602422
+  sha256: 6a94c40175c8c37fce0a84fb531ce2b3aea43e33f7ddb28007d3dcf47b22a9da
   patches:
     - 0001-fix-osx-protobuf.patch
 
