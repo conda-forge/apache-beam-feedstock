@@ -48,13 +48,13 @@ outputs:
         - fasteners >=0.3,<1.0
         - grpcio >=1.33.1,!=1.48.0,<2
         - python-hdfs >=2.1.0,<3.0.0
-        - httplib2 >=0.8,<0.20.0
-        - numpy >=1.14.3,<1.23.0
+        - httplib2 >=0.8,<0.22.0
+        - numpy >=1.14.3,<1.25.0
         - objsize >=0.6.1,<0.7.0
         - orjson <4.0
         - protobuf >3.12.2,<4
         - proto-plus >=1.7.1,<2
-        - pyarrow >=0.15.1,<10.0.0
+        - pyarrow >=3.0.0,<10.0.0
         - pydot >=1.2.0,<2
         - python-dateutil >=2.8.0,<3
         - pymongo >=3.8.0,<4.0.0
@@ -155,7 +155,7 @@ outputs:
 #        - ipython >=8,<9
 #        - ipykernel >=6,<7
 #        - ipywidgets >=8,<9
-#        - jupyter_client >=6.1.11,<6.1.13
+#        - jupyter_client >=6.1.11,<8.0.3
 #        - timeloop >=1.0.2,<2
 #    test:
 #      imports:
@@ -209,8 +209,7 @@ outputs:
       run:
         - python
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
-        - pandas >=1.0,<1.6,!=1.5.0,!=1.5.1  # [py<310]
-        - pandas >=1.4.3,<1.6,!=1.5.0,!=1.5.1  # [py>=310]
+        - pandas >=1.4.3,!=1.5.0,!=1.5.1,<1.6
     test:
       imports:
         # not sure what test is useful...
