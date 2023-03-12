@@ -1,11 +1,11 @@
-About apache-beam-split
-=======================
+About apache-beam-split-feedstock
+=================================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/apache-beam-feedstock/blob/main/LICENSE.txt)
 
 Home: https://beam.apache.org
 
 Package license: Apache-2.0
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/apache-beam-feedstock/blob/main/LICENSE.txt)
 
 Summary: Apache Beam: An advanced unified programming model
 
