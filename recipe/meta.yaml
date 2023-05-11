@@ -16,7 +16,7 @@ build:
 requirements:
   host:
     - python
-    - numpy >=1.14.3,<1.23.0
+    - numpy >=1.14.3,<1.25.0
     - cython >=0.28.1
   run:
     - python
