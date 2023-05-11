@@ -8,8 +8,6 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.zip
   sha256: 31b235be2e6eee3f05ec9bae5731810289bab7771b56a333732964ade4b63d7e
-  patches:
-    - 0001-fix-osx-protobuf.patch
 
 build:
   skip: true  # [win or py>=312]
