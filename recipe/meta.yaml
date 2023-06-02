@@ -46,11 +46,11 @@ outputs:
         - fasteners >=0.3,<1.0
         - grpcio >=1.33.1,!=1.48.0,<2
         - python-hdfs >=2.1.0,<3.0.0
-        - httplib2 >=0.8,<0.22.0
+        - httplib2 >=0.8,<0.23.0
         - numpy >=1.14.3,<1.25.0
         - objsize >=0.6.1,<0.7.0
         - orjson <4.0
-        - protobuf >=3.20.3,<4.23.0
+        - protobuf >=3.20.3,<4.24.0
         - proto-plus >=1.7.1,<2
         - pyarrow >=3.0.0,<12.0.0
         - pydot >=1.2.0,<2
@@ -115,7 +115,7 @@ outputs:
         - python
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
         # Try match what's in https://github.com/apache/beam/blob/v{{ version }}/sdks/python/setup.py#L268
-        - cachetools >=3.1.0,<5
+        - cachetools >=3.1.0,<6
         - google-apitools >=0.5.31,<0.5.32
         - google-auth >=1.18.0,<2
         - google-auth-httplib2 >=0.1.0,<0.2.0
@@ -125,7 +125,7 @@ outputs:
         - google-cloud-bigquery-core >=2.0.0,<4
         - google-cloud-bigquery-storage >=2.6.3,<3
         - google-cloud-core >=2.0.0,<3
-        - google-cloud-bigtable >=2.0.0,<3
+        - google-cloud-bigtable >=2.0.0,<2.18.0
         - google-cloud-spanner >=3.0.0,<4
         - google-cloud-dlp >=3.0.0,<4
         - google-cloud-language >=2.0,<3
@@ -153,7 +153,7 @@ outputs:
 #        - ipython >=8,<9
 #        - ipykernel >=6,<7
 #        - ipywidgets >=8,<9
-#        - jupyter_client >=6.1.11,<8.0.3
+#        - jupyter_client >=6.1.11,!=6.1.13,<8.2.1
 #        - timeloop >=1.0.2,<2
 #    test:
 #      imports:
@@ -171,7 +171,7 @@ outputs:
       run:
         - python
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
-        - boto3 >=1.9
+        - boto3 >=1.9,<2
     test:
       imports:
         # not sure what test is useful...
@@ -188,9 +188,9 @@ outputs:
       run:
         - python
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
-        - azure-storage-blob >=12.3.2
-        - azure-core >=1.7.0
-        - azure-identity >=1.12.0
+        - azure-storage-blob >=12.3.2,<13
+        - azure-core >=1.7.0,<2
+        - azure-identity >=1.12.0,<2
     test:
       imports:
         # not sure what test is useful...
