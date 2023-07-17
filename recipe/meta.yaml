@@ -1,5 +1,5 @@
 {% set name = "apache-beam" %}
-{% set version = "2.48.0" %}
+{% set version = "2.49.0" %}
 
 package:
   name: {{ name|lower }}-split
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.zip
-  sha256: 611b9e0015e9d1d2ca34b91453117ee5b54ca7446de505b95b2c5a5c4d9f4b1e
+  sha256: b4a72ef7f73bc254cf377d2363847cabbb4795e23db7a14a235e435a90e2cfac
 
 build:
   skip: true  # [win or py>=312]
@@ -117,7 +117,7 @@ outputs:
         # Try match what's in https://github.com/apache/beam/blob/v{{ version }}/sdks/python/setup.py#L268
         - cachetools >=3.1.0,<6
         - google-apitools >=0.5.31,<0.5.32
-        - google-auth >=1.18.0,<2
+        - google-auth >=1.18.0,<3
         - google-auth-httplib2 >=0.1.0,<0.2.0
         - google-cloud-datastore >=2.0.0,<3
         - google-cloud-pubsub >=2.1.0,<3
@@ -125,13 +125,14 @@ outputs:
         - google-cloud-bigquery-core >=2.0.0,<4
         - google-cloud-bigquery-storage >=2.6.3,<3
         - google-cloud-core >=2.0.0,<3
-        - google-cloud-bigtable >=2.0.0,<2.18.0
+        - google-cloud-bigtable >=2.19.0,<3
         - google-cloud-spanner >=3.0.0,<4
         - google-cloud-dlp >=3.0.0,<4
         - google-cloud-language >=2.0,<3
         - google-cloud-videointelligence >=2.0,<3
         - google-cloud-vision >=2,<4
         - google-cloud-recommendations-ai >=0.1.0,<0.11.0
+        - google-cloud-aiplatform >=1.26.0,<2.0
     test:
       imports:
         # not sure what test is useful...
