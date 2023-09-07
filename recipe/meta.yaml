@@ -64,6 +64,9 @@ outputs:
     test:
       requires:
         - pip
+        - pytest
+      files:
+        - test.py
       imports:
         - apache_beam
         - apache_beam.coders
@@ -105,6 +108,7 @@ outputs:
         - apache_beam.utils
       commands:
         - pip check
+        - pytest test.py
 
   - name: {{ name }}-with-gcp
     requirements:
