@@ -49,6 +49,8 @@ outputs:
         - httplib2 >=0.8,<0.23.0
         - js2py >=0.74,<1
         - {{ pin_compatible("numpy") }}
+        # still need this because a "compatible" numpy may be out of range
+        - numpy >=1.14.3,<1.25.0
         - objsize >=0.6.1,<0.7.0
         - packaging >=22.0
         - pymongo >=3.8.0,<5.0.0
