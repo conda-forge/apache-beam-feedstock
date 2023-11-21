@@ -1,13 +1,13 @@
 {% set name = "apache-beam" %}
-{% set version = "2.51.0" %}
+{% set version = "2.52.0" %}
 
 package:
   name: {{ name|lower }}-split
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.zip
-  sha256: 2303bc6030072b033a567abb8c20de1d00faa86a69e2b168a952c3b692af97a2
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 605ca0c80ea34d5af43eb7c6f8697b8fff7f799f271f286fb861aadc32d7148c
 
 build:
   skip: true  # [win or py>=312]
@@ -140,7 +140,7 @@ outputs:
         - google-cloud-videointelligence >=2.0,<3
         - google-cloud-vision >=2,<4
         - google-cloud-recommendations-ai >=0.1.0,<0.11.0
-        - google-cloud-aiplatform >=1.26.0,<2.0    
+        - google-cloud-aiplatform >=1.26.0,<2.0
     test:
       imports:
         # not sure what test is useful...
