@@ -34,7 +34,8 @@ outputs:
       host:
         - python
         - setuptools
-        - grpcio-tools 1.53.0
+        # grpcio-tools 1.53.0 was not build on conda-forge
+        - grpcio-tools 1.54.2
         - mypy-protobuf 3.5.0
         - distlib 0.3.7
         - cython >=0.29.36,<3.0
