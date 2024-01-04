@@ -57,6 +57,7 @@ outputs:
         - httplib2 >=0.8,<0.23.0
         - js2py >=0.74,<1
         - jsonschema >=4.0.0,<5.0.0
+        - jsonpickle >=3.0.0,<4.0.0
         - {{ pin_compatible("numpy") }}
         # still need this because a "compatible" numpy may be out of range
         - numpy >=1.14.3,<1.25.0
@@ -72,7 +73,7 @@ outputs:
         - requests >=2.24.0,<3.0.0
         - typing-extensions >=3.7.0
         - zstandard >=0.18.0,<1
-        - pyarrow >=3.0.0,<12.0.0
+        - pyarrow >=3.0.0,<15.0.0
         - pyarrow-hotfix <1
 
     test:
@@ -140,6 +141,7 @@ outputs:
         - google-cloud-datastore >=2.0.0,<3
         - google-cloud-pubsub >=2.1.0,<3
         - google-cloud-pubsublite >=1.2.0,<2
+        - google-cloud-storage >=2.10.0,<3
         - google-cloud-bigquery-core >=2.0.0,<4
         - google-cloud-bigquery-storage >=2.6.3,<3
         - google-cloud-core >=2.0.0,<3
@@ -261,6 +263,7 @@ outputs:
       run:
         - python
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
+        - docstring-parser >=0.15,<1.0
         - pyyaml >=3.12,<7.0.0
         - pandas >=1.4.3,!=1.5.0,!=1.5.1,<1.6
     test:
