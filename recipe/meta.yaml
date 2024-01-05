@@ -30,6 +30,8 @@ outputs:
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
         - cython >=0.29.36,<3.0                  # [build_platform != target_platform]
         - {{ compiler('c') }}
+        # osx-arm64 seems to need this for some reason
+        - {{ compiler('cxx') }}
         - numpy                                  # [build_platform != target_platform]
       host:
         - python
