@@ -16,7 +16,7 @@ build:
 requirements:
   host:
     - python
-    - numpy
+    - numpy >=1.14.3,<1.25.0
     - cython >=0.29.36,<3.0
   run:
     - python
@@ -33,7 +33,7 @@ outputs:
         - {{ compiler('c') }}
         # osx-arm64 seems to need this for some reason
         - {{ compiler('cxx') }}
-        - numpy                                  # [build_platform != target_platform]
+        - numpy >=1.14.3,<1.25.0                 # [build_platform != target_platform]
       host:
         - python
         - setuptools
@@ -42,7 +42,7 @@ outputs:
         - mypy-protobuf 3.5.0
         - distlib 0.3.7
         - cython >=0.29.36,<3.0
-        - numpy >=1.14.3,<1.27.0
+        - numpy >=1.14.3,<1.25.0
         - pip
       run:
         - python
@@ -60,7 +60,7 @@ outputs:
         - jsonpickle >=3.0.0,<4.0.0
         - {{ pin_compatible("numpy") }}
         # still need this because a "compatible" numpy may be out of range
-        - numpy >=1.14.3,<1.27.0
+        - numpy >=1.14.3,<1.25.0
         - objsize >=0.6.1,<0.8.0
         - packaging >=22.0
         - pymongo >=3.8.0,<5.0.0
