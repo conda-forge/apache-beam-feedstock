@@ -33,7 +33,7 @@ outputs:
         - {{ compiler('c') }}
         # osx-arm64 seems to need this for some reason
         - {{ compiler('cxx') }}
-        - numpy                                 # [build_platform != target_platform]
+        - numpy                                  # [build_platform != target_platform]
       host:
         - python
         - setuptools
