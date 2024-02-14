@@ -16,7 +16,7 @@ build:
 requirements:
   host:
     - python
-    - numpy >=1.14.3,<1.25.0
+    - numpy
     - cython >=0.29.36,<3.0
   run:
     - python
@@ -33,7 +33,7 @@ outputs:
         - {{ compiler('c') }}
         # osx-arm64 seems to need this for some reason
         - {{ compiler('cxx') }}
-        - numpy >=1.14.3,<1.25.0                 # [build_platform != target_platform]
+        - numpy                                 # [build_platform != target_platform]
       host:
         - python
         - setuptools
@@ -42,7 +42,7 @@ outputs:
         - mypy-protobuf 3.5.0
         - distlib 0.3.7
         - cython >=0.29.36,<3.0
-        - numpy >=1.14.3,<1.25.0
+        - numpy
         - pip
       run:
         - python
