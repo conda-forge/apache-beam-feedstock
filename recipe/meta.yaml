@@ -1,5 +1,5 @@
 {% set name = "apache-beam" %}
-{% set version = "2.53.0" %}
+{% set version = "2.54.0" %}
 
 package:
   name: {{ name|lower }}-split
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 06b41f182f8a15cd248930fbc517a2f1f87daef2fd2006f1b5f74abf81010405
+  sha256: 4a8675de29afef7e128349b031ebcfee2e08d39c205bdb1855051ef122a11803
 
 build:
   skip: true  # [win or py>=312]
@@ -61,7 +61,7 @@ outputs:
         - {{ pin_compatible("numpy") }}
         # still need this because a "compatible" numpy may be out of range
         - numpy >=1.14.3,<1.25.0
-        - objsize >=0.6.1,<0.7.0
+        - objsize >=0.6.1,<0.8.0
         - packaging >=22.0
         - pymongo >=3.8.0,<5.0.0
         - proto-plus >=1.7.1,<2
@@ -141,7 +141,7 @@ outputs:
         - google-cloud-datastore >=2.0.0,<3
         - google-cloud-pubsub >=2.1.0,<3
         - google-cloud-pubsublite >=1.2.0,<2
-        - google-cloud-storage >=2.10.0,<3
+        - google-cloud-storage >=2.14.0,<3
         - google-cloud-bigquery-core >=2.0.0,<4
         - google-cloud-bigquery-storage >=2.6.3,<3
         - google-cloud-core >=2.0.0,<3
@@ -228,7 +228,7 @@ outputs:
       run:
         - python
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
-        - pandas >=1.4.3,!=1.5.0,!=1.5.1,<1.6
+        - pandas >=1.4.3,!=1.5.0,!=1.5.1,<2.1
     test:
       imports:
         # not sure what test is useful...
@@ -265,7 +265,8 @@ outputs:
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
         - docstring_parser >=0.15,<1.0
         - pyyaml >=3.12,<7.0.0
-        - pandas >=1.4.3,!=1.5.0,!=1.5.1,<1.6
+        - pandas >=1.4.3,!=1.5.0,!=1.5.1,<2.1
+        - virtualenv-clone >=0.5,<1.0
     test:
       imports:
         # not sure what test is useful...
