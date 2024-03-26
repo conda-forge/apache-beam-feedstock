@@ -1,5 +1,5 @@
 {% set name = "apache-beam" %}
-{% set version = "2.54.0" %}
+{% set version = "2.55.0" %}
 
 package:
   name: {{ name|lower }}-split
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 4a8675de29afef7e128349b031ebcfee2e08d39c205bdb1855051ef122a11803
+  sha256: 909f368fbc923369198abd7ee81e135771b1b3f7374e910ac5c1bd8ed1db1865
 
 build:
   skip: true  # [win or py>=312]
@@ -29,7 +29,10 @@ outputs:
         - python                                 # [build_platform != target_platform]
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
         - grpcio-tools 1.54.2                    # [build_platform != target_platform]
-        - cython >=0.29.36,<3.0                  # [build_platform != target_platform]
+        - cython 0.29.36                         # [build_platform != target_platform]
+        - pyyaml >=3.12,<7.0.0                   # [build_platform != target_platform]
+        - jinja2 >=2.7.1,<4.0.0                  # [build_platform != target_platform]
+        - yapf 0.29.0                            # [build_platform != target_platform]
         - {{ compiler('c') }}
         # osx-arm64 seems to need this for some reason
         - {{ compiler('cxx') }}
@@ -41,7 +44,10 @@ outputs:
         - grpcio-tools 1.54.2
         - mypy-protobuf 3.5.0
         - distlib 0.3.7
-        - cython >=0.29.36,<3.0
+        - cython 0.29.36
+        - pyyaml >=3.12,<7.0.0
+        - jinja2 >=2.7.1,<4.0.0
+        - yapf 0.29.0
         - numpy
         - pip
       run:
@@ -60,7 +66,7 @@ outputs:
         - jsonpickle >=3.0.0,<4.0.0
         - {{ pin_compatible("numpy") }}
         # still need this because a "compatible" numpy may be out of range
-        - numpy >=1.14.3,<1.25.0
+        - numpy >=1.14.3,<1.27.0
         - objsize >=0.6.1,<0.8.0
         - packaging >=22.0
         - pymongo >=3.8.0,<5.0.0
