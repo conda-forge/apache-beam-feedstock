@@ -29,7 +29,10 @@ outputs:
         - python                                 # [build_platform != target_platform]
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
         - grpcio-tools 1.54.2                    # [build_platform != target_platform]
-        - cython >=0.29.36,<3.0                  # [build_platform != target_platform]
+        - cython 0.29.36                         # [build_platform != target_platform]
+        - pyyaml >=3.12,<7.0.0                   # [build_platform != target_platform]
+        - jinja2 >=2.7.1,<4.0.0                  # [build_platform != target_platform]
+        - yapf 0.29.0                            # [build_platform != target_platform]
         - {{ compiler('c') }}
         # osx-arm64 seems to need this for some reason
         - {{ compiler('cxx') }}
@@ -41,7 +44,10 @@ outputs:
         - grpcio-tools 1.54.2
         - mypy-protobuf 3.5.0
         - distlib 0.3.7
-        - cython >=0.29.36,<3.0
+        - cython 0.29.36
+        - pyyaml >=3.12,<7.0.0
+        - jinja2 >=2.7.1,<4.0.0
+        - yapf 0.29.0
         - numpy
         - pip
       run:
@@ -60,7 +66,7 @@ outputs:
         - jsonpickle >=3.0.0,<4.0.0
         - {{ pin_compatible("numpy") }}
         # still need this because a "compatible" numpy may be out of range
-        - numpy >=1.14.3,<1.25.0
+        - numpy >=1.14.3,<1.27.0
         - objsize >=0.6.1,<0.8.0
         - packaging >=22.0
         - pymongo >=3.8.0,<5.0.0
