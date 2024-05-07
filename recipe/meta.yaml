@@ -28,7 +28,7 @@ outputs:
       build:
         - python                                 # [build_platform != target_platform]
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-        - grpcio-tools 1.54.2                    # [build_platform != target_platform]
+        - grpcio-tools 1.62.1                    # [build_platform != target_platform]
         - cython 0.29.36                         # [build_platform != target_platform]
         - pyyaml >=3.12,<7.0.0                   # [build_platform != target_platform]
         - jinja2 >=2.7.1,<4.0.0                  # [build_platform != target_platform]
@@ -41,8 +41,7 @@ outputs:
       host:
         - python
         - setuptools
-        # grpcio-tools 1.53.0 was not build on conda-forge
-        - grpcio-tools 1.54.2
+        - grpcio-tools 1.62.1
         - mypy-protobuf 3.5.0
         - distlib 0.3.7
         - cython 0.29.36
@@ -59,10 +58,10 @@ outputs:
         - cloudpickle >=2.2.1,<2.3.dev0
         - fastavro >=0.23.6,<2
         - fasteners >=0.3,<1.0
-        - grpcio >=1.33.1,!=1.48.0,<2
+        - grpcio >=1.33.1,<2,!=1.48.0,!=1.59.*,!=1.60.*,!=1.61.*,!=1.62.0,!=1.62.1
         - python-hdfs >=2.1.0,<3.0.0
         - httplib2 >=0.8,<0.23.0
-        - js2py >=0.74,<1
+        - js2py >=0.74,<1  # [py<312]
         - jsonschema >=4.0.0,<5.0.0
         - jsonpickle >=3.0.0,<4.0.0
         - {{ pin_compatible("numpy") }}
@@ -76,6 +75,7 @@ outputs:
         - pydot >=1.2.0,<2
         - python-dateutil >=2.8.0,<3
         - pytz >=2018.3
+        - redis >=5.0.0,<6
         - regex >=2020.6.8
         - requests >=2.24.0,<3.0.0
         - typing-extensions >=3.7.0
@@ -144,7 +144,7 @@ outputs:
         - google-api-core >=2.0.0,<3
         - google-apitools >=0.5.31,<0.5.32
         - google-auth >=1.18.0,<3
-        - google-auth-httplib2 >=0.1.0,<0.2.0
+        - google-auth-httplib2 >=0.1.0,<0.3.0
         - google-cloud-datastore >=2.0.0,<3
         - google-cloud-pubsub >=2.1.0,<3
         - google-cloud-pubsublite >=1.2.0,<2
