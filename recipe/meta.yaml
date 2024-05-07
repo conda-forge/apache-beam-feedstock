@@ -10,7 +10,7 @@ source:
   sha256: 4d9f38ff287757a3d7045a96ecad4bf825e2fb1ca0b9da334927d7cc8b75b250
 
 build:
-  skip: true  # [win or py>=312]
+  skip: true  # [win or py>=313]
   number: 0
 
 requirements:
@@ -133,11 +133,15 @@ outputs:
         - pytest test.py
 
   - name: {{ name }}-with-gcp
+    build:
+      noarch: python
+      # noarch so just build it once
+      skip: true  # [not linux64 or py!=312]
     requirements:
       host:
-        - python
+        - python >=3.8,<3.13
       run:
-        - python
+        - python >=3.8,<3.13
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
         # Try match what's in https://github.com/apache/beam/blob/v{{ version }}/sdks/python/setup.py#L268
         - cachetools >=3.1.0,<6
@@ -193,11 +197,15 @@ outputs:
 #        - pip
 
   - name: {{ name }}-with-aws
+    build:
+      noarch: python
+      # noarch so just build it once
+      skip: true  # [not linux64 or py!=312]
     requirements:
       host:
-        - python
+        - python >=3.8,<3.13
       run:
-        - python
+        - python >=3.8,<3.13
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
         - boto3 >=1.9,<2
     test:
@@ -210,11 +218,15 @@ outputs:
         - pip
 
   - name: {{ name }}-with-azure
+    build:
+      noarch: python
+      # noarch so just build it once
+      skip: true  # [not linux64 or py!=312]
     requirements:
       host:
-        - python
+        - python >=3.8,<3.13
       run:
-        - python
+        - python >=3.8,<3.13
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
         - azure-storage-blob >=12.3.2,<13
         - azure-core >=1.7.0,<2
@@ -229,11 +241,15 @@ outputs:
         - pip
 
   - name: {{ name }}-with-dataframe
+    build:
+      noarch: python
+      # noarch so just build it once
+      skip: true  # [not linux64 or py!=312]
     requirements:
       host:
-        - python
+        - python >=3.8,<3.13
       run:
-        - python
+        - python >=3.8,<3.13
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
         - pandas >=1.4.3,!=1.5.0,!=1.5.1,<2.1
     test:
@@ -246,11 +262,15 @@ outputs:
         - pip
 
   - name: {{ name }}-with-dask
+    build:
+      noarch: python
+      # noarch so just build it once
+      skip: true  # [not linux64 or py!=312]
     requirements:
       host:
-        - python
+        - python >=3.8,<3.13
       run:
-        - python
+        - python >=3.8,<3.13
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
         - dask >=2022.6
         - distributed >=2022.6
@@ -264,11 +284,15 @@ outputs:
         - pip
 
   - name: {{ name }}-with-yaml
+    build:
+      noarch: python
+      # noarch so just build it once
+      skip: true  # [not linux64 or py!=312]
     requirements:
       host:
-        - python
+        - python >=3.8,<3.13
       run:
-        - python
+        - python >=3.8,<3.13
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
         - docstring_parser >=0.15,<1.0
         - pyyaml >=3.12,<7.0.0
