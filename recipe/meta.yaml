@@ -1,5 +1,5 @@
 {% set name = "apache-beam" %}
-{% set version = "2.58.1" %}
+{% set version = "2.59.0" %}
 
 package:
   name: {{ name|lower }}-split
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 921a1f13b56098d9d2f5201531387982312a762e5e3b4add59d083ee6a796041
+  sha256: 4002abe6c0b872dfba99d4785211d15ec368a0c6f67fe989db5342fba022e260
 
 build:
   skip: true  # [win or py>=313]
@@ -17,7 +17,7 @@ requirements:
   host:
     - python
     - numpy
-    - cython >=0.29.36,<3.0
+    - cython >=3.0,<4
   run:
     - python
 
@@ -77,7 +77,7 @@ outputs:
         - pytz >=2018.3
         - redis-py >=5.0.0,<6
         - regex >=2020.6.8
-        - requests >=2.24.0,<3.0.0,!=2.32.*
+        - requests >=2.24.0,<3.0.0
         - typing-extensions >=3.7.0
         - zstandard >=0.18.0,<1
         - pyarrow >=3.0.0,<17.0.0
@@ -152,7 +152,7 @@ outputs:
         - google-cloud-datastore >=2.0.0,<3
         - google-cloud-pubsub >=2.1.0,<3
         - google-cloud-pubsublite >=1.2.0,<2
-        - google-cloud-storage >=2.16.0,<3
+        - google-cloud-storage >=2.18.2,<3
         - google-cloud-bigquery-core >=2.0.0,<4
         - google-cloud-bigquery-storage >=2.6.3,<3
         - google-cloud-core >=2.0.0,<3
