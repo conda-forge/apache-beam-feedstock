@@ -1,5 +1,6 @@
 {% set name = "apache-beam" %}
 {% set version = "2.61.0" %}
+{% set python_min = "3.9" %}
 
 package:
   name: {{ name|lower }}-split
@@ -137,12 +138,12 @@ outputs:
     build:
       noarch: python
       # noarch so just build it once
-      skip: true  # [not linux64 or py!=311]
+      skip: true  # [not linux64 or py!=39]
     requirements:
       host:
-        - python >=3.8,<3.13
+        - python
       run:
-        - python >=3.8,<3.13
+        - python >={{ python_min }}
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
         # Try match what's in https://github.com/apache/beam/blob/v{{ version }}/sdks/python/setup.py#L268
         - cachetools >=3.1.0,<6
@@ -202,12 +203,12 @@ outputs:
     build:
       noarch: python
       # noarch so just build it once
-      skip: true  # [not linux64 or py!=311]
+      skip: true  # [not linux64 or py!=39]
     requirements:
       host:
-        - python >=3.8,<3.13
+        - python
       run:
-        - python >=3.8,<3.13
+        - python >={{ python_min }}
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
         - boto3 >=1.9,<2
     test:
@@ -223,12 +224,12 @@ outputs:
     build:
       noarch: python
       # noarch so just build it once
-      skip: true  # [not linux64 or py!=311]
+      skip: true  # [not linux64 or py!=39]
     requirements:
       host:
-        - python >=3.8,<3.13
+        - python
       run:
-        - python >=3.8,<3.13
+        - python >={{ python_min }}
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
         - azure-storage-blob >=12.3.2,<13
         - azure-core >=1.7.0,<2
@@ -246,12 +247,12 @@ outputs:
     build:
       noarch: python
       # noarch so just build it once
-      skip: true  # [not linux64 or py!=311]
+      skip: true  # [not linux64 or py!=39]
     requirements:
       host:
-        - python >=3.8,<3.13
+        - python
       run:
-        - python >=3.8,<3.13
+        - python >={{ python_min }}
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
         - pandas >=1.4.3,!=1.5.0,!=1.5.1,<2.2
     test:
@@ -267,12 +268,12 @@ outputs:
     build:
       noarch: python
       # noarch so just build it once
-      skip: true  # [not linux64 or py!=311]
+      skip: true  # [not linux64 or py!=39]
     requirements:
       host:
-        - python >=3.8,<3.13
+        - python
       run:
-        - python >=3.8,<3.13
+        - python >={{ python_min }}
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
         - dask >=2022.6
         - distributed >=2022.6
@@ -289,12 +290,12 @@ outputs:
     build:
       noarch: python
       # noarch so just build it once
-      skip: true  # [not linux64 or py!=311]
+      skip: true  # [not linux64 or py!=39]
     requirements:
       host:
-        - python >=3.8,<3.13
+        - python
       run:
-        - python >=3.8,<3.13
+        - python >={{ python_min }}
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
         - docstring_parser >=0.15,<1.0
         - jinja2 >=3.0,<3.2
