@@ -38,7 +38,7 @@ outputs:
         - {{ stdlib("c") }}
         # osx-arm64 seems to need this for some reason
         - {{ compiler('cxx') }}
-        - numpy >=1.14.3,<2.2.0                  # [build_platform != target_platform]
+        - numpy >=1.14.3,<2.3.0                  # [build_platform != target_platform]
       host:
         - python
         - setuptools
@@ -49,7 +49,7 @@ outputs:
         - pyyaml >=3.12,<7.0.0
         - jinja2 >=2.7.1,<4.0.0
         - yapf 0.29.0
-        - numpy >=1.14.3,<2.2.0
+        - numpy >=1.14.3,<2.3.0
         - pip
       run:
         - python
@@ -66,7 +66,7 @@ outputs:
         - jsonpickle >=3.0.0,<4.0.0
         - {{ pin_compatible("numpy") }}
         # still need this because a "compatible" numpy may be out of range
-        - numpy >=1.14.3,<2.2.0
+        - numpy >=1.14.3,<2.3.0
         - objsize >=0.6.1,<0.8.0
         - packaging >=22.0
         - pymongo >=3.8.0,<5.0.0
@@ -141,7 +141,7 @@ outputs:
       skip: true  # [not linux64 or py!=39]
     requirements:
       host:
-        - python
+        - python {{ python_min }}
       run:
         - python >={{ python_min }}
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
@@ -174,12 +174,13 @@ outputs:
       commands:
         - pip check
       requires:
+        - python {{ python_min }}
         - pip
 
 #  - name: {{ name }}-with-interactive
 #    requirements:
 #      host:
-#        - python
+#        - python {{ python_min }}
 #      run:
 #        - python
 #        - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
@@ -197,6 +198,7 @@ outputs:
 #      commands:
 #        - pip check
 #      requires:
+#        - python {{ python_min }}
 #        - pip
 
   - name: {{ name }}-with-aws
@@ -206,7 +208,7 @@ outputs:
       skip: true  # [not linux64 or py!=39]
     requirements:
       host:
-        - python
+        - python {{ python_min }}
       run:
         - python >={{ python_min }}
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
@@ -218,6 +220,7 @@ outputs:
       commands:
         - pip check
       requires:
+        - python {{ python_min }}
         - pip
 
   - name: {{ name }}-with-azure
@@ -227,7 +230,7 @@ outputs:
       skip: true  # [not linux64 or py!=39]
     requirements:
       host:
-        - python
+        - python {{ python_min }}
       run:
         - python >={{ python_min }}
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
@@ -241,6 +244,7 @@ outputs:
       commands:
         - pip check
       requires:
+        - python {{ python_min }}
         - pip
 
   - name: {{ name }}-with-dataframe
@@ -250,7 +254,7 @@ outputs:
       skip: true  # [not linux64 or py!=39]
     requirements:
       host:
-        - python
+        - python {{ python_min }}
       run:
         - python >={{ python_min }}
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
@@ -262,6 +266,7 @@ outputs:
       commands:
         - pip check
       requires:
+        - python {{ python_min }}
         - pip
 
   - name: {{ name }}-with-dask
@@ -271,12 +276,12 @@ outputs:
       skip: true  # [not linux64 or py!=39]
     requirements:
       host:
-        - python
+        - python {{ python_min }}
       run:
         - python >={{ python_min }}
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
-        - dask >=2022.6
-        - distributed >=2022.6
+        - dask >=2024.4.2
+        - distributed >=2024.4.2
     test:
       imports:
         # not sure what test is useful...
@@ -284,6 +289,7 @@ outputs:
       commands:
         - pip check
       requires:
+        - python {{ python_min }}
         - pip
 
   - name: {{ name }}-with-yaml
@@ -293,7 +299,7 @@ outputs:
       skip: true  # [not linux64 or py!=39]
     requirements:
       host:
-        - python
+        - python {{ python_min }}
       run:
         - python >={{ python_min }}
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
@@ -310,6 +316,7 @@ outputs:
       commands:
         - pip check
       requires:
+        - python {{ python_min }}
         - pip
 
 
