@@ -12,7 +12,7 @@ source:
 
 build:
   skip: true  # [win or py>=313]
-  number: 1
+  number: 2
 
 requirements:
   host:
@@ -64,7 +64,6 @@ outputs:
         - httplib2 >=0.8,<0.23.0
         - jsonschema >=4.0.0,<5.0.0
         - jsonpickle >=3.0.0,<4.0.0
-        - {{ pin_compatible("numpy") }}
         # still need this because a "compatible" numpy may be out of range
         - numpy >=1.14.3,<2.3.0
         - objsize >=0.6.1,<0.8.0
