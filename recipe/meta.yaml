@@ -405,31 +405,32 @@ outputs:
 #        - python {{ python_min }}
 #        - pip
 
-  - name: {{ name }}-with-onnx
-    build:
-      noarch: python
-      # noarch so just build it once
-      skip: true  # [not linux64 or py!=39]
-    requirements:
-      host:
-        - python {{ python_min }}
-      run:
-        - python >={{ python_min }}
-        - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
-        - onnxruntime 1.13.1
-        - pytorch 1.13.1
-        - tensorflow 2.11.0
-        - tf2onnx 1.13.0
-        - skl2onnx 1.13
-        - transformers 4.25.1
-    test:
-      imports:
-        - apache_beam
-      commands:
-        - pip check
-      requires:
-        - python {{ python_min }}
-        - pip
+# transformers 4.25.1 was not build (and is crazy old!)
+#  - name: {{ name }}-with-onnx
+#    build:
+#      noarch: python
+#      # noarch so just build it once
+3      skip: true  # [not linux64 or py!=39]
+#    requirements:
+#      host:
+#        - python {{ python_min }}
+#      run:
+#        - python >={{ python_min }}
+#        - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
+#        - onnxruntime 1.13.1
+#        - pytorch 1.13.1
+#        - tensorflow 2.11.0
+#        - tf2onnx 1.13.0
+#        - skl2onnx 1.13
+#        - transformers 4.25.1
+#    test:
+#      imports:
+#        - apache_beam
+#      commands:
+#        - pip check
+#      requires:
+#        - python {{ python_min }}
+#        - pip
 
 # datatable 1.0.0 has not been built on conda-forge
 #  - name: {{ name }}-with-xgboost
