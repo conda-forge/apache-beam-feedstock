@@ -361,29 +361,31 @@ outputs:
 #        - python {{ python_min }}
 #        - pip
 
-  - name: {{ name }}-with-transformers
-    build:
-      noarch: python
-      # noarch so just build it once
-      skip: true  # [not linux64 or py!=39]
-    requirements:
-      host:
-        - python {{ python_min }}
-      run:
-        - python >={{ python_min }}
-        - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
-        - transformers >=4.28.0,<4.49.0
-        # tensorflow 2.12.0 was not built on conda-forge
-        - tensorflow 2.12.1
-        - pytorch >=1.9.0,<2.1.0
-    test:
-      imports:
-        - apache_beam
-      commands:
-        - pip check
-      requires:
-        - python {{ python_min }}
-        - pip
+# the libmamba solver couldn't install tensorflow, perhaps related to above.  
+# It might work with newer python versions but I don't have time to investigate.
+#  - name: {{ name }}-with-transformers
+#    build:
+#      noarch: python
+#      # noarch so just build it once
+#      skip: true  # [not linux64 or py!=39]
+#    requirements:
+#      host:
+#        - python {{ python_min }}
+#      run:
+#        - python >={{ python_min }}
+#        - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
+#        - transformers >=4.28.0,<4.49.0
+#        # tensorflow 2.12.0 was not built on conda-forge
+#        - tensorflow 2.12.1
+#        - pytorch >=1.9.0,<2.1.0
+#    test:
+#      imports:
+#        - apache_beam
+#      commands:
+#        - pip check
+#      requires:
+#        - python {{ python_min }}
+#        - pip
 
 # tensorflow_transform does not appear to be on conda-forge
 #  - name: {{ name }}-with-tft
