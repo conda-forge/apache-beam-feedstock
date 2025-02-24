@@ -338,26 +338,28 @@ outputs:
         - python {{ python_min }}
         - pip
 
-  - name: {{ name }}-with-tensorflow
-    build:
-      noarch: python
-      # noarch so just build it once
-      skip: true  # [not linux64 or py!=39]
-    requirements:
-      host:
-        - python {{ python_min }}
-      run:
-        - python >={{ python_min }}
-        - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
-        - tensorflow >=2.12rc1,<2.13
-    test:
-      imports:
-        - apache_beam
-      commands:
-        - pip check
-      requires:
-        - python {{ python_min }}
-        - pip
+# the libmamba solver couldn't make this work.  It might work with newer
+# python versions but I don't have time to investigate
+#  - name: {{ name }}-with-tensorflow
+#    build:
+#      noarch: python
+#      # noarch so just build it once
+#      skip: true  # [not linux64 or py!=39]
+#    requirements:
+#      host:
+#        - python {{ python_min }}
+#      run:
+#        - python >={{ python_min }}
+#        - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
+#        - tensorflow >=2.12rc1,<2.13
+#    test:
+#      imports:
+#        - apache_beam
+#      commands:
+#        - pip check
+#      requires:
+#        - python {{ python_min }}
+#        - pip
 
   - name: {{ name }}-with-transformers
     build:
