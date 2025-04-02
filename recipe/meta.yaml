@@ -306,7 +306,7 @@ outputs:
         - pyyaml >=3.12,<7.0.0
         - pandas >=1.4.3,!=1.5.0,!=1.5.1,<2.3
         - virtualenv-clone >=0.5,<1.0
-        - js2py>=0.74,<1  # [py<312]
+        - js2py >=0.74,<1  # [py<312]
     test:
       imports:
         # not sure what test is useful...
