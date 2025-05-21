@@ -1,5 +1,5 @@
 {% set name = "apache-beam" %}
-{% set version = "2.64.0" %}
+{% set version = "2.65.0" %}
 {% set python_min = "3.9" %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: fbc6b6afc1b87bdf88330d32930ac517ab336bf588a6c3f67d8e978c385bbb64
+  sha256: 91cafaa2dc6c42f2a28c9a15912d45cb117096bbfd11ae84c45a1aa34eb852ea
 
 build:
   skip: true  # [win or py>=313]
@@ -56,7 +56,6 @@ outputs:
         - crcmod >=1.7,<2.0
         - orjson >=3.9.7,<4
         - dill >=0.3.1.1,<0.3.2
-        - cloudpickle >=2.2.1,<2.3.dev0
         - fastavro >=0.23.6,<2
         - fasteners >=0.3,<1.0
         - grpcio >=1.33.1,<2,!=1.48.0,!=1.59.*,!=1.60.*,!=1.61.*,!=1.62.0,!=1.62.1,<1.66.0
