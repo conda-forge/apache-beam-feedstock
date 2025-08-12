@@ -77,11 +77,12 @@ outputs:
         - pytz >=2018.3
         - redis-py >=5.0.0,<6
         - regex >=2020.6.8
-        - requests >=2.24.0,<3.0.0
+        - requests >=2.32.4,<3.0.0
         - sortedcontainers >=2.4.0
         - typing-extensions >=3.7.0
         - zstandard >=0.18.0,<1
         - pyyaml >=3.12,<7.0.0
+        - pymilvus >=2.5.10,<3.0.0
         - pyarrow >=3.0.0,<19.0.0
         - pyarrow-hotfix <1
 
@@ -146,7 +147,7 @@ outputs:
         - python >={{ python_min }}
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
         # Try match what's in https://github.com/apache/beam/blob/v{{ version }}/sdks/python/setup.py#L268
-        - cachetools >=3.1.0,<6
+        - cachetools >=3.1.0,<7
         - google-api-core >=2.0.0,<3
         - google-apitools >=0.5.31,<0.5.32  # [py <= 312]
         - google-apitools >=0.5.32,<0.5.33  # [py >= 313]
@@ -331,7 +332,7 @@ outputs:
       run:
         - python >={{ python_min }}
         - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
-        - pytorch <=1.13.0,<2.1.0
+        - pytorch <=1.9.0,<2.8.0
     test:
       imports:
         - apache_beam
@@ -341,54 +342,49 @@ outputs:
         - python {{ python_min }}
         - pip
 
-# the libmamba solver couldn't make this work.  It might work with newer
-# python versions but I don't have time to investigate
-#  - name: {{ name }}-with-tensorflow
-#    build:
-#      noarch: python
-#      # noarch so just build it once
-#      skip: true  # [not linux64 or py!=39]
-#    requirements:
-#      host:
-#        - python {{ python_min }}
-#      run:
-#        - python >={{ python_min }}
-#        - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
-#        - tensorflow >=2.12rc1,<2.13
-#    test:
-#      imports:
-#        - apache_beam
-#      commands:
-#        - pip check
-#      requires:
-#        - python {{ python_min }}
-#        - pip
+  - name: {{ name }}-with-tensorflow
+    build:
+      noarch: python
+      # noarch so just build it once
+      skip: true  # [not linux64 or py!=39]
+    requirements:
+      host:
+        - python {{ python_min }}
+      run:
+        - python >={{ python_min }}
+        - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
+        - tensorflow >=2.12rc1,<2.17
+    test:
+      imports:
+        - apache_beam
+      commands:
+        - pip check
+      requires:
+        - python {{ python_min }}
+        - pip
 
-# the libmamba solver couldn't install tensorflow, perhaps related to above.  
-# It might work with newer python versions but I don't have time to investigate.
-#  - name: {{ name }}-with-transformers
-#    build:
-#      noarch: python
-#      # noarch so just build it once
-#      skip: true  # [not linux64 or py!=39]
-#    requirements:
-#      host:
-#        - python {{ python_min }}
-#      run:
-#        - python >={{ python_min }}
-#        - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
-#        - transformers >=4.28.0,<4.49.0
-#        # tensorflow 2.12.0 was not built on conda-forge
-#        - tensorflow 2.12.1
-#        - pytorch >=1.9.0,<2.1.0
-#    test:
-#      imports:
-#        - apache_beam
-#      commands:
-#        - pip check
-#      requires:
-#        - python {{ python_min }}
-#        - pip
+  - name: {{ name }}-with-transformers
+    build:
+      noarch: python
+      # noarch so just build it once
+      skip: true  # [not linux64 or py!=39]
+    requirements:
+      host:
+        - python {{ python_min }}
+      run:
+        - python >={{ python_min }}
+        - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
+        - transformers >=4.28.0,<4.49.0
+        - tensorflow >=2.12.0
+        - pytorch >=1.9.0
+    test:
+      imports:
+        - apache_beam
+      commands:
+        - pip check
+      requires:
+        - python {{ python_min }}
+        - pip
 
 # tensorflow_transform does not appear to be on conda-forge
 #  - name: {{ name }}-with-tft
