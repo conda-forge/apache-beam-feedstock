@@ -67,13 +67,6 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_python3.9.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=2693&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/apache-beam-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_python3.9.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
               <td>linux_aarch64_python3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=2693&branchName=main">
@@ -99,13 +92,6 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=2693&branchName=main">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/apache-beam-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_python3.13.____cp313" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_aarch64_python3.9.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=2693&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/apache-beam-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
@@ -137,13 +123,6 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le_python3.9.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=2693&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/apache-beam-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_python3.9.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
               <td>osx_64_python3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=2693&branchName=main">
@@ -169,13 +148,6 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=2693&branchName=main">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/apache-beam-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.13.____cp313" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_python3.9.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=2693&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/apache-beam-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
@@ -206,13 +178,6 @@ Current build status
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/apache-beam-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.13.____cp313" alt="variant">
                 </a>
               </td>
-            </tr><tr>
-              <td>osx_arm64_python3.9.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=2693&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/apache-beam-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.9.____cpython" alt="variant">
-                </a>
-              </td>
             </tr>
           </tbody>
         </table>
@@ -227,14 +192,6 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-apache--beam-green.svg)](https://anaconda.org/conda-forge/apache-beam) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/apache-beam.svg)](https://anaconda.org/conda-forge/apache-beam) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/apache-beam.svg)](https://anaconda.org/conda-forge/apache-beam) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/apache-beam.svg)](https://anaconda.org/conda-forge/apache-beam) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-apache--beam--with--aws-green.svg)](https://anaconda.org/conda-forge/apache-beam-with-aws) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/apache-beam-with-aws.svg)](https://anaconda.org/conda-forge/apache-beam-with-aws) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/apache-beam-with-aws.svg)](https://anaconda.org/conda-forge/apache-beam-with-aws) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/apache-beam-with-aws.svg)](https://anaconda.org/conda-forge/apache-beam-with-aws) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-apache--beam--with--azure-green.svg)](https://anaconda.org/conda-forge/apache-beam-with-azure) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/apache-beam-with-azure.svg)](https://anaconda.org/conda-forge/apache-beam-with-azure) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/apache-beam-with-azure.svg)](https://anaconda.org/conda-forge/apache-beam-with-azure) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/apache-beam-with-azure.svg)](https://anaconda.org/conda-forge/apache-beam-with-azure) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-apache--beam--with--dask-green.svg)](https://anaconda.org/conda-forge/apache-beam-with-dask) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/apache-beam-with-dask.svg)](https://anaconda.org/conda-forge/apache-beam-with-dask) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/apache-beam-with-dask.svg)](https://anaconda.org/conda-forge/apache-beam-with-dask) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/apache-beam-with-dask.svg)](https://anaconda.org/conda-forge/apache-beam-with-dask) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-apache--beam--with--dataframe-green.svg)](https://anaconda.org/conda-forge/apache-beam-with-dataframe) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/apache-beam-with-dataframe.svg)](https://anaconda.org/conda-forge/apache-beam-with-dataframe) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/apache-beam-with-dataframe.svg)](https://anaconda.org/conda-forge/apache-beam-with-dataframe) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/apache-beam-with-dataframe.svg)](https://anaconda.org/conda-forge/apache-beam-with-dataframe) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-apache--beam--with--gcp-green.svg)](https://anaconda.org/conda-forge/apache-beam-with-gcp) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/apache-beam-with-gcp.svg)](https://anaconda.org/conda-forge/apache-beam-with-gcp) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/apache-beam-with-gcp.svg)](https://anaconda.org/conda-forge/apache-beam-with-gcp) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/apache-beam-with-gcp.svg)](https://anaconda.org/conda-forge/apache-beam-with-gcp) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-apache--beam--with--tensorflow--hub-green.svg)](https://anaconda.org/conda-forge/apache-beam-with-tensorflow-hub) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/apache-beam-with-tensorflow-hub.svg)](https://anaconda.org/conda-forge/apache-beam-with-tensorflow-hub) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/apache-beam-with-tensorflow-hub.svg)](https://anaconda.org/conda-forge/apache-beam-with-tensorflow-hub) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/apache-beam-with-tensorflow-hub.svg)](https://anaconda.org/conda-forge/apache-beam-with-tensorflow-hub) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-apache--beam--with--torch-green.svg)](https://anaconda.org/conda-forge/apache-beam-with-torch) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/apache-beam-with-torch.svg)](https://anaconda.org/conda-forge/apache-beam-with-torch) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/apache-beam-with-torch.svg)](https://anaconda.org/conda-forge/apache-beam-with-torch) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/apache-beam-with-torch.svg)](https://anaconda.org/conda-forge/apache-beam-with-torch) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-apache--beam--with--yaml-green.svg)](https://anaconda.org/conda-forge/apache-beam-with-yaml) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/apache-beam-with-yaml.svg)](https://anaconda.org/conda-forge/apache-beam-with-yaml) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/apache-beam-with-yaml.svg)](https://anaconda.org/conda-forge/apache-beam-with-yaml) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/apache-beam-with-yaml.svg)](https://anaconda.org/conda-forge/apache-beam-with-yaml) |
 
 Installing apache-beam-split
 ============================
@@ -246,16 +203,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `apache-beam, apache-beam-with-aws, apache-beam-with-azure, apache-beam-with-dask, apache-beam-with-dataframe, apache-beam-with-gcp, apache-beam-with-tensorflow-hub, apache-beam-with-torch, apache-beam-with-yaml` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `apache-beam` can be installed with `conda`:
 
 ```
-conda install apache-beam apache-beam-with-aws apache-beam-with-azure apache-beam-with-dask apache-beam-with-dataframe apache-beam-with-gcp apache-beam-with-tensorflow-hub apache-beam-with-torch apache-beam-with-yaml
+conda install apache-beam
 ```
 
 or with `mamba`:
 
 ```
-mamba install apache-beam apache-beam-with-aws apache-beam-with-azure apache-beam-with-dask apache-beam-with-dataframe apache-beam-with-gcp apache-beam-with-tensorflow-hub apache-beam-with-torch apache-beam-with-yaml
+mamba install apache-beam
 ```
 
 It is possible to list all of the versions of `apache-beam` available on your platform with `conda`:
