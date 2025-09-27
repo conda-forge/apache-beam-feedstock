@@ -368,33 +368,36 @@ outputs:
         - python {{ python_min }}
         - pip
 
-  - name: {{ name }}-with-transformers
-    build:
-      noarch: python
-      # noarch so just build it once
-      skip: true  # [not linux64 or py!=310]
-    requirements:
-      host:
-        - python {{ python_min }}
-      run:
-        - python >={{ python_min }}
-        - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
-        - transformers >=4.28.0,<4.56.0
-        - tensorflow >=2.12.0
-        - pytorch >=1.9.0
-        # conda-forge maintainers of multiprocess have done a poor job
-        # of constraining dill so we have to constrain multiprocess
-        # based on its dill compatibility.  We currently need 
-        # dill >=0.3.1.1,<0.3.2 (see above)
-        - multiprocess <0.70.10
-    test:
-      imports:
-        - apache_beam
-      commands:
-        - pip check
-      requires:
-        - python {{ python_min }}
-        - pip
+  # multiprocess old enough to be compabible with dill constraint
+  # (currently: dill >=0.3.1.1,<0.3.2, requiring multiprocess <0.70.10) 
+  # is not compatible with python >=3.10 (way too old!)
+  # - name: {{ name }}-with-transformers
+  #   build:
+  #     noarch: python
+  #     # noarch so just build it once
+  #     skip: true  # [not linux64 or py!=310]
+  #   requirements:
+  #     host:
+  #       - python {{ python_min }}
+  #     run:
+  #       - python >={{ python_min }}
+  #       - {{ pin_subpackage(name, max_pin='x.x.x.x.x.x') }}
+  #       - transformers >=4.28.0,<4.56.0
+  #       - tensorflow >=2.12.0
+  #       - pytorch >=1.9.0
+  #       # conda-forge maintainers of multiprocess have done a poor job
+  #       # of constraining dill so we have to constrain multiprocess
+  #       # based on its dill compatibility.  We currently need 
+  #       # dill >=0.3.1.1,<0.3.2 (see above)
+  #       - multiprocess <0.70.10
+  #   test:
+  #     imports:
+  #       - apache_beam
+  #     commands:
+  #       - pip check
+  #     requires:
+  #       - python {{ python_min }}
+  #       - pip
 
 # tensorflow_transform does not appear to be on conda-forge
 #  - name: {{ name }}-with-tft
