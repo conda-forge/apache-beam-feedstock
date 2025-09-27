@@ -56,6 +56,8 @@ outputs:
         - python
         - crcmod >=1.7,<2.0
         - orjson >=3.9.7,<4
+        # fix multiprocess constraint based on dill constraint, since maintainers of the
+        # multiprocess package have consistently got it wrong
         - dill >=0.3.1.1,<0.3.2
         - fastavro >=0.23.6,<2
         - fasteners >=0.3,<1.0
@@ -380,6 +382,11 @@ outputs:
         - transformers >=4.28.0,<4.56.0
         - tensorflow >=2.12.0
         - pytorch >=1.9.0
+        # conda-forge maintainers of multiprocess have done a poor job
+        # of constraining dill so we have to constrain multiprocess
+        # based on its dill compatibility.  We currently need 
+        # dill >=0.3.1.1,<0.3.2 (see above)
+        - multiprocess <0.70.10
     test:
       imports:
         - apache_beam
