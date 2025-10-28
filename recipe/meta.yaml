@@ -45,7 +45,7 @@ outputs:
         - grpcio-tools 1.62.1  # [py <= 312]
         - grpcio-tools 1.71.0  # [py >= 313]
         - mypy-protobuf 3.5.0
-        - distlib 0.3.7
+        - distlib 0.3.9
         - cython >=3.0,<4
         - pyyaml >=3.12,<7.0.0
         - jinja2 >=2.7.1,<4.0.0
