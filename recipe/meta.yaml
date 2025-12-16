@@ -1,5 +1,5 @@
 {% set name = "apache-beam" %}
-{% set version = "2.69.0" %}
+{% set version = "2.70.0" %}
 
 package:
   name: {{ name|lower }}-split
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 97039d80e5c90cf0f321ca9106a0e5fa853cc14e2c17c543f08473a5c78367dc
+  sha256: 85d381df3941eedff88ccd0dafb6b4a28006d912c8a0cb9d065b7ae5f4f7bd40
 
 build:
   skip: true  # [win or py>=314]
@@ -54,15 +54,12 @@ outputs:
         - pip
       run:
         - python
-        - crcmod >=1.7,<2.0
-        - orjson >=3.9.7,<4
+        - cryptography >=39.0.0,<48.0.0
         - fastavro >=0.23.6,<2
         - fasteners >=0.3,<1.0
         - grpcio >=1.33.1,<2,!=1.48.0,!=1.59.*,!=1.60.*,!=1.61.*,!=1.62.0,!=1.62.1,<1.66.0  # [py <= 312]
         - grpcio >=1.67.0                                                                   # [py >= 313]
-        - python-hdfs >=2.1.0,<3.0.0
         - httplib2 >=0.8,<0.23.0
-        - jsonschema >=4.0.0,<5.0.0
         - jsonpickle >=3.0.0,<4.0.0
         - numpy >=1.14.3,<2.3.0
         - objsize >=0.6.1,<0.8.0
@@ -70,11 +67,8 @@ outputs:
         - pymongo >=3.8.0,<5.0.0
         - proto-plus >=1.7.1,<2
         - protobuf >=3.20.3,<6.0.0.dev0,!=4.0.*,!=4.21.*,!=4.22.0,!=4.23.*,!=4.24.*
-        - pydot >=1.2.0,<2
         - python-dateutil >=2.8.0,<3
         - pytz >=2018.3
-        - redis-py >=5.0.0,<6
-        - regex >=2020.6.8
         - requests >=2.24.0,<3.0.0
         - sortedcontainers >=2.4.0
         - typing-extensions >=3.7.0
@@ -182,6 +176,7 @@ outputs:
         - google-cloud-bigtable >=2.19.0,<3
         - google-cloud-spanner >=3.0.0,<4
         - google-cloud-dlp >=3.0.0,<4
+        - google-cloud-kms >=3.0.0,<4
         - google-cloud-language >=2.0,<3
         - google-cloud-secret-manager >=2.0,<3
         - google-cloud-videointelligence >=2.0,<3
@@ -190,9 +185,12 @@ outputs:
         - google-cloud-aiplatform >=1.26.0,<2.0
         - cloud-sql-python-connector >=1.18.2,<2.0.0
         - python-tds >=1.16.1
-        - pg8000 >=1.31.1
+        - pg8000 >=1.31.5
         - pymysql >=1.1.0
         - keyrings.google-artifactregistry-auth
+        - orjson >=3.9.7,<4
+        - regex >=2020.6.8
+
     test:
       imports:
         # not sure what test is useful...
