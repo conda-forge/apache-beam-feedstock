@@ -1,9 +1,9 @@
-About apache-beam-split-feedstock
-=================================
+About apache-beam-feedstock
+===========================
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/apache-beam-feedstock/blob/main/LICENSE.txt)
 
-Home: https://beam.apache.org
+Home: https://beam.apache.org/
 
 Package license: Apache-2.0
 
@@ -16,10 +16,9 @@ Documentation: https://beam.apache.org/documentation/
 Apache Beam is an open source, unified model for defining both batch
 and streaming data-parallel processing pipelines. Using one of the open
 source Beam SDKs, you build a program that defines the pipeline. The
-pipeline is then executed by one of Beam’s supported distributed
+pipeline is then executed by one of Beam's supported distributed
 processing back-ends, which include Apache Apex, Apache Flink, Apache
 Spark, and Google Cloud Dataflow.
-
 
 Current build status
 ====================
@@ -204,10 +203,10 @@ Current release info
 | [![Conda Recipe](https://img.shields.io/badge/recipe-apache--beam--with--transformers-green.svg)](https://anaconda.org/conda-forge/apache-beam-with-transformers) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/apache-beam-with-transformers.svg)](https://anaconda.org/conda-forge/apache-beam-with-transformers) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/apache-beam-with-transformers.svg)](https://anaconda.org/conda-forge/apache-beam-with-transformers) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/apache-beam-with-transformers.svg)](https://anaconda.org/conda-forge/apache-beam-with-transformers) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-apache--beam--with--yaml-green.svg)](https://anaconda.org/conda-forge/apache-beam-with-yaml) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/apache-beam-with-yaml.svg)](https://anaconda.org/conda-forge/apache-beam-with-yaml) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/apache-beam-with-yaml.svg)](https://anaconda.org/conda-forge/apache-beam-with-yaml) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/apache-beam-with-yaml.svg)](https://anaconda.org/conda-forge/apache-beam-with-yaml) |
 
-Installing apache-beam-split
-============================
+Installing apache-beam
+======================
 
-Installing `apache-beam-split` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `apache-beam` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
 conda config --add channels conda-forge
@@ -293,17 +292,17 @@ Terminology
                   produce the finished article (built conda distributions)
 
 
-Updating apache-beam-split-feedstock
-====================================
+Updating apache-beam-feedstock
+==============================
 
-If you would like to improve the apache-beam-split recipe or build a new
+If you would like to improve the apache-beam recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `conda-forge` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `conda-forge` channel.
-Note that all branches in the conda-forge/apache-beam-split-feedstock are
+Note that all branches in the conda-forge/apache-beam-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks, and branches in the main repository should only be used to
 build distinct package versions.
