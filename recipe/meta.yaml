@@ -38,7 +38,7 @@ outputs:
         - {{ stdlib("c") }}
         # osx-arm64 seems to need this for some reason
         - {{ compiler('cxx') }}
-        - numpy >=1.14.3,<2.3.0                  # [build_platform != target_platform]
+        - numpy >=1.14.3,<2.5.0                  # [build_platform != target_platform]
       host:
         - python
         - setuptools
@@ -50,18 +50,20 @@ outputs:
         - pyyaml >=3.12,<7.0.0
         - jinja2 >=2.7.1,<4.0.0
         - yapf 0.43.0
-        - numpy >=1.14.3,<2.3.0
+        - numpy >=1.14.3,<2.5.0
         - pip
       run:
         - python
         - cryptography >=39.0.0,<48.0.0
+        - envoy-data-plane >=1.0.3,<2  # [py >= 3.13]
+        - envoy-data-plane <0.3.0      # [py < 3.13]
         - fastavro >=0.23.6,<2
         - fasteners >=0.3,<1.0
         - grpcio >=1.33.1,<2,!=1.48.0,!=1.59.*,!=1.60.*,!=1.61.*,!=1.62.0,!=1.62.1,<1.66.0  # [py <= 312]
         - grpcio >=1.67.0                                                                   # [py >= 313]
         - httplib2 >=0.8,<0.23.0
         - jsonpickle >=3.0.0,<4.0.0
-        - numpy >=1.14.3,<2.3.0
+        - numpy >=1.14.3,<2.5.0
         - objsize >=0.6.1,<0.8.0
         - packaging >=22.0
         - pymongo >=3.8.0,<5.0.0
@@ -74,7 +76,7 @@ outputs:
         - typing-extensions >=3.7.0
         - zstandard >=0.18.0,<1
         - pyyaml >=3.12,<7.0.0
-        - beartype >=0.21.0,<0.22.0
+        - beartype >=0.21.0,<0.23.0
         - pyarrow >=3.0.0,<19.0.0
         - pyarrow-hotfix <1
 
