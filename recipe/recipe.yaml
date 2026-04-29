@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: apache-beam
-  version: 2.70.0
+  version: "2.73.0"
   noarch_build: linux and x86_64 and python == ${{ python_min }}
 
 recipe:
@@ -11,11 +11,11 @@ recipe:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/apache_beam-${{ version }}.tar.gz
-  sha256: 85d381df3941eedff88ccd0dafb6b4a28006d912c8a0cb9d065b7ae5f4f7bd40
+  sha256: ff9b6b320729051ce97c9809f64b825c9056694cc4c9afd3385fe124dcc60b80
 
 build:
   skip: win or python >= "3.14"
-  number: 1
+  number: 0
 
 outputs:
   - package:
@@ -34,8 +34,8 @@ outputs:
             - jinja2 >=2.7.1,<4.0.0
             - yapf ==0.43.0
             - numpy >=1.14.3,<2.3.0
-        - if: build_platform != target_platform and python < "3.13"
-          then: grpcio-tools ==1.62.1
+            - if: python < "3.13"
+              then: grpcio-tools ==1.62.1
         - if: build_platform != target_platform and python >= "3.13"
           then: grpcio-tools ==1.71.0
         - ${{ compiler('c') }}
@@ -47,8 +47,7 @@ outputs:
         - setuptools
         - if: python < "3.13"
           then: grpcio-tools ==1.62.1
-        - if: python >= "3.13"
-          then: grpcio-tools ==1.71.0
+          else: grpcio-tools ==1.71.0
         - mypy-protobuf ==3.5.0
         - distlib ==0.3.9
         - cython >=3.0,<4
@@ -64,8 +63,7 @@ outputs:
         - fasteners >=0.3,<1.0
         - if: python < "3.13"
           then: grpcio >=1.33.1,<2,!=1.48.0,!=1.59.*,!=1.60.*,!=1.61.*,!=1.62.0,!=1.62.1,<1.66.0
-        - if: python >= "3.13"
-          then: grpcio >=1.67.0
+          else: grpcio >=1.67.0
         - httplib2 >=0.8,<0.23.0
         - jsonpickle >=3.0.0,<4.0.0
         - numpy >=1.14.3,<2.3.0
@@ -172,8 +170,7 @@ outputs:
         - google-api-core >=2.0.0,<3
         - if: python < "3.13"
           then: google-apitools >=0.5.31,<0.5.32
-        - if: python >= "3.13"
-          then: google-apitools >=0.5.35
+          else: google-apitools >=0.5.35
         - google-auth >=1.18.0,<3
         - google-auth-httplib2 >=0.1.0,<0.3.0
         - google-cloud-datastore >=2.0.0,<3
