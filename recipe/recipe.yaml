@@ -27,7 +27,10 @@ outputs:
         # (apache_beam.io.components.rate_limiter), whose import Beam already
         # guards with try/except, so removing it here only disables that one
         # feature and lets `pip check` pass.
-        - sed -i '/envoy-data-plane/d' setup.py
+        # Use -i.bak (portable across GNU/BSD sed; macOS's BSD sed rejects a
+        # bare -i) and clean up the backup afterwards.
+        - sed -i.bak '/envoy-data-plane/d' setup.py
+        - rm -f setup.py.bak
         - ${{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
     requirements:
       build:
