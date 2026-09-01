@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: apache-beam
-  version: "2.75.0"
+  version: "2.76.0"
   noarch_build: linux and x86_64 and python == ${{ python_min }}
 
 recipe:
@@ -11,7 +11,7 @@ recipe:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/apache_beam-${{ version }}.tar.gz
-  sha256: e8d5964b5a0dd706f0e50ed1af971219390ed7477cf644268aed058cd7d1e820
+  sha256: 5402dbc1589025f40c6ac34feb4fa1e95a445fe03ec1fa9e6afdf75d379f829a
 
 build:
   skip: win or python >= "3.15"
@@ -45,8 +45,7 @@ outputs:
             - numpy >=1.14.3,<2.5.0
             - if: python < "3.13"
               then: grpcio-tools ==1.62.1
-        - if: build_platform != target_platform and python >= "3.13"
-          then: grpcio-tools ==1.71.0
+              else: grpcio-tools ==1.71.0
         - ${{ compiler('c') }}
         - ${{ stdlib("c") }}
         # osx-arm64 seems to need this for some reason
