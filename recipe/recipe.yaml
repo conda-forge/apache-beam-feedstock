@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: apache-beam
-  version: "2.75.0"
+  version: "2.76.0"
   noarch_build: linux and x86_64 and python == ${{ python_min }}
 
 recipe:
@@ -11,7 +11,7 @@ recipe:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/apache_beam-${{ version }}.tar.gz
-  sha256: e8d5964b5a0dd706f0e50ed1af971219390ed7477cf644268aed058cd7d1e820
+  sha256: 5402dbc1589025f40c6ac34feb4fa1e95a445fe03ec1fa9e6afdf75d379f829a
 
 build:
   skip: win or python >= "3.15"
@@ -38,40 +38,40 @@ outputs:
           then:
             - python
             - cross-python_${{ target_platform }}
-            - cython >=3.2.5,<4
+            - cython >=3.2.6,<4
             - pyyaml >=3.12,<7.0.0
             - jinja2 >=2.7.1,<4.0.0
             - yapf ==0.43.0
             - numpy >=1.14.3,<2.5.0
             - if: python < "3.13"
               then: grpcio-tools ==1.62.1
-        - if: build_platform != target_platform and python >= "3.13"
-          then: grpcio-tools ==1.71.0
+              else: grpcio-tools ==1.71.0
         - ${{ compiler('c') }}
         - ${{ stdlib("c") }}
         # osx-arm64 seems to need this for some reason
         - ${{ compiler('cxx') }}
       host:
         - python
+        - pip
         - setuptools
-        - if: python < "3.13"
+        - wheel >=0.36.0
+        - if: match(python, "<3.13")
           then: grpcio-tools ==1.62.1
           else: grpcio-tools ==1.71.0
         - mypy-protobuf ==3.5.0
-        - distlib ==0.4.2
-        - cython >=3.2.5,<4
+        - distlib ==0.4.3
+        - numpy >=1.14.3,<2.5.0
+        - cython >=3.2.6,<4
         - pyyaml >=3.12,<7.0.0
         - jinja2 >=2.7.1,<4.0.0
         - yapf ==0.43.0
-        - numpy >=1.14.3,<2.5.0
-        - pip
       run:
         - python
-        - cryptography >=39.0.0,<48.0.0
+        - cryptography >=39.0.0,<49.0.0
         - fastavro >=0.23.6,<2
         - fasteners >=0.3,<1.0
         - grpcio >=1.33.1,<2,!=1.48.0,!=1.59.*,!=1.60.*,!=1.61.*,!=1.62.0,!=1.62.1,!=1.66.*,!=1.67.*,!=1.68.*,!=1.69.*,!=1.70.*
-        - httplib2 >=0.8,<0.32.0
+        - httplib2 >=0.8,<1.0.0
         - jsonpickle >=3.0.4,<5.0.0
         - numpy >=1.14.3,<2.5.0
         - objsize >=0.6.1,<0.8.0
@@ -82,14 +82,13 @@ outputs:
         - protobuf >=3.20.3,<7.0.0.dev0,!=4.0.*,!=4.21.*,!=4.22.0,!=4.23.*,!=4.24.*
         - python-dateutil >=2.8.0,<3
         - pytz >=2018.3
-        - requests >=2.24.0,<3.0.0
+        - requests >=2.32.4,<3.0.0
         - sortedcontainers >=2.4.0
-        - typing-extensions >=3.7.0
+        - typing_extensions >=3.7.0
         - zstandard >=0.18.0,<1
         - pyyaml >=3.12,<7.0.0
         - beartype >=0.21.0,<0.23.0
-        - pyarrow >=6.0.1,<24.0.0
-        - pyarrow-hotfix <1
+        - pyarrow >=14.0.1,<26.0.0
     tests:
       - python:
           imports:
@@ -159,7 +158,9 @@ outputs:
           imports:
             - apache_beam
           pip_check: true
-          python_version: ${{ python_min }}.*
+          python_version:
+            - ${{ python_min }}.*
+            - "*"
 
   - package:
       name: ${{ name }}-with-gcp
@@ -176,9 +177,8 @@ outputs:
         # Try to match what's in https://github.com/apache/beam/blob/v${{ version }}/sdks/python/setup.py#L268
         - cachetools >=3.1.0,<7
         - google-api-core >=2.0.0,<3
-        - if: python < "3.13"
-          then: google-apitools >=0.5.31,<0.5.32
-          else: google-apitools >=0.5.35
+        # upstream's bound varies by python; this package is built once for all of them
+        - google-apitools >=0.5.35
         - google-auth >=2.0.0,<3
         - google-auth-httplib2 >=0.1.0,<0.3.0
         - google-cloud-datastore >=2.0.0,<3
@@ -190,7 +190,7 @@ outputs:
         - google-cloud-bigquery-core >=2.0.0,<4
         - google-cloud-bigquery-storage >=2.6.3,<3
         - google-cloud-core >=2.0.0,<3
-        - google-cloud-bigtable >=2.19.0,<3
+        - google-cloud-bigtable >=2.42.0,<3
         - google-cloud-build >=3.35.0,<4
         - google-cloud-spanner >=3.0.0,<4
         - google-cloud-dlp >=3.0.0,<4
@@ -213,7 +213,9 @@ outputs:
           imports:
             - apache_beam
           pip_check: true
-          python_version: ${{ python_min }}.*
+          python_version:
+            - ${{ python_min }}.*
+            - "*"
 
   - package:
       name: ${{ name }}-with-aws
@@ -233,7 +235,9 @@ outputs:
           imports:
             - apache_beam
           pip_check: true
-          python_version: ${{ python_min }}.*
+          python_version:
+            - ${{ python_min }}.*
+            - "*"
 
   - package:
       name: ${{ name }}-with-azure
@@ -255,7 +259,9 @@ outputs:
           imports:
             - apache_beam
           pip_check: true
-          python_version: ${{ python_min }}.*
+          python_version:
+            - ${{ python_min }}.*
+            - "*"
 
   - package:
       name: ${{ name }}-with-dataframe
@@ -269,13 +275,15 @@ outputs:
       run:
         - python >=${{ python_min }}
         - ${{ pin_subpackage(name, upper_bound='x.x.x.x.x.x') }}
-        - pandas >=1.4.3,!=1.5.0,!=1.5.1,<2.4
+        - pandas >=1.4.3,<2.4,!=1.5.0,!=1.5.1
     tests:
       - python:
           imports:
             - apache_beam
           pip_check: true
-          python_version: ${{ python_min }}.*
+          python_version:
+            - ${{ python_min }}.*
+            - "*"
 
   - package:
       name: ${{ name }}-with-dask
@@ -289,14 +297,16 @@ outputs:
       run:
         - python >=${{ python_min }}
         - ${{ pin_subpackage(name, upper_bound='x.x.x.x.x.x') }}
-        - dask >=2024.4.2
         - distributed >=2024.4.2
+        - dask-core >=2024.4.2
     tests:
       - python:
           imports:
             - apache_beam
           pip_check: true
-          python_version: ${{ python_min }}.*
+          python_version:
+            - ${{ python_min }}.*
+            - "*"
 
   - package:
       name: ${{ name }}-with-yaml
@@ -312,10 +322,9 @@ outputs:
         - ${{ pin_subpackage(name, upper_bound='x.x.x.x.x.x') }}
         - docstring_parser >=0.15,<1.0
         - jinja2 >=3.0,<3.2
-        - pyyaml >=3.12,<7.0.0
-        - pandas >=1.4.3,!=1.5.0,!=1.5.1,<2.4
         - virtualenv-clone >=0.5,<1.0
         - jsonschema >=4.0.0,<5.0.0
+        - pandas >=1.4.3,<2.4,!=1.5.0,!=1.5.1
         # upstream 2.75.0 swapped js2py for quickjs-ng, which is not available on
         # conda-forge, so the yaml JS UDF runtime is omitted here
     tests:
@@ -323,7 +332,9 @@ outputs:
           imports:
             - apache_beam
           pip_check: true
-          python_version: ${{ python_min }}.*
+          python_version:
+            - ${{ python_min }}.*
+            - "*"
 
   - package:
       name: ${{ name }}-with-torch
@@ -343,7 +354,9 @@ outputs:
           imports:
             - apache_beam
           pip_check: true
-          python_version: ${{ python_min }}.*
+          python_version:
+            - ${{ python_min }}.*
+            - "*"
 
   - package:
       name: ${{ name }}-with-tensorflow
@@ -357,14 +370,16 @@ outputs:
       run:
         - python >=${{ python_min }}
         - ${{ pin_subpackage(name, upper_bound='x.x.x.x.x.x') }}
-        - tensorflow >=2.12rc1,<2.21
+        - tensorflow >=2.12rc1,<2.22
         - absl-py >=0.12.0
     tests:
       - python:
           imports:
             - apache_beam
           pip_check: true
-          python_version: ${{ python_min }}.*
+          python_version:
+            - ${{ python_min }}.*
+            - "*"
 
   - package:
       name: ${{ name }}-with-transformers
@@ -386,7 +401,9 @@ outputs:
           imports:
             - apache_beam
           pip_check: true
-          python_version: ${{ python_min }}.*
+          python_version:
+            - ${{ python_min }}.*
+            - "*"
 
   - package:
       name: ${{ name }}-with-tensorflow-hub
@@ -406,7 +423,9 @@ outputs:
           imports:
             - apache_beam
           pip_check: true
-          python_version: ${{ python_min }}.*
+          python_version:
+            - ${{ python_min }}.*
+            - "*"
 
 about:
   homepage: https://beam.apache.org
