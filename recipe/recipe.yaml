@@ -288,7 +288,7 @@ outputs:
       run:
         - python >=${{ python_min }}
         - ${{ pin_subpackage(name, upper_bound='x.x.x.x.x.x') }}
-        - dask >=2024.4.2
+        - dask-core >=2024.4.2
         - distributed >=2024.4.2
     tests:
       - python:
