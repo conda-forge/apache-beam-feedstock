@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: apache-beam
-  version: "2.76.0"
+  version: "2.77.0"
   noarch_build: linux and x86_64 and python == ${{ python_min }}
 
 recipe:
@@ -11,7 +11,7 @@ recipe:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/apache_beam-${{ version }}.tar.gz
-  sha256: 5402dbc1589025f40c6ac34feb4fa1e95a445fe03ec1fa9e6afdf75d379f829a
+  sha256: 67ec5cf4610b28cc235957d7ed8890acd2dccd58f256b90c1565cbb57b32e461
 
 build:
   skip: win or python >= "3.15"
