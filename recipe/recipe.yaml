@@ -43,9 +43,12 @@ outputs:
             - jinja2 >=2.7.1,<4.0.0
             - yapf ==0.43.0
             - numpy >=1.14.3,<2.5.0
-            - if: python < "3.13"
+            - if: match(python, "<3.13")
               then: grpcio-tools ==1.62.1
-              else: grpcio-tools ==1.71.0
+            - if: match(python, ">=3.13") and match(python, "<3.14")
+              then: grpcio-tools ==1.71.0
+            - if: match(python, ">=3.14")
+              then: grpcio-tools ==1.78.0
         - ${{ compiler('c') }}
         - ${{ stdlib("c") }}
         # osx-arm64 seems to need this for some reason
