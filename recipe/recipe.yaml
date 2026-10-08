@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: apache-beam
-  version: "2.76.0"
+  version: "2.77.0"
   noarch_build: linux and x86_64 and python == ${{ python_min }}
 
 recipe:
@@ -11,7 +11,7 @@ recipe:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/apache_beam-${{ version }}.tar.gz
-  sha256: 5402dbc1589025f40c6ac34feb4fa1e95a445fe03ec1fa9e6afdf75d379f829a
+  sha256: 67ec5cf4610b28cc235957d7ed8890acd2dccd58f256b90c1565cbb57b32e461
 
 build:
   skip: win or python >= "3.15"
@@ -43,9 +43,12 @@ outputs:
             - jinja2 >=2.7.1,<4.0.0
             - yapf ==0.43.0
             - numpy >=1.14.3,<2.5.0
-            - if: python < "3.13"
+            - if: match(python, "<3.13")
               then: grpcio-tools ==1.62.1
-              else: grpcio-tools ==1.71.0
+            - if: match(python, ">=3.13") and match(python, "<3.14")
+              then: grpcio-tools ==1.71.0
+            - if: match(python, ">=3.14")
+              then: grpcio-tools ==1.78.0
         - ${{ compiler('c') }}
         - ${{ stdlib("c") }}
         # osx-arm64 seems to need this for some reason
@@ -57,7 +60,10 @@ outputs:
         - wheel >=0.36.0
         - if: match(python, "<3.13")
           then: grpcio-tools ==1.62.1
-          else: grpcio-tools ==1.71.0
+        - if: match(python, ">=3.13") and match(python, "<3.14")
+          then: grpcio-tools ==1.71.0
+        - if: match(python, ">=3.14")
+          then: grpcio-tools ==1.78.0
         - mypy-protobuf ==3.5.0
         - distlib ==0.4.3
         - numpy >=1.14.3,<2.5.0
@@ -67,7 +73,7 @@ outputs:
         - yapf ==0.43.0
       run:
         - python
-        - cryptography >=39.0.0,<49.0.0
+        - cryptography >=39.0.0,<51.0.0
         - fastavro >=0.23.6,<2
         - fasteners >=0.3,<1.0
         - grpcio >=1.33.1,<2,!=1.48.0,!=1.59.*,!=1.60.*,!=1.61.*,!=1.62.0,!=1.62.1,!=1.66.*,!=1.67.*,!=1.68.*,!=1.69.*,!=1.70.*
@@ -190,7 +196,7 @@ outputs:
         - google-cloud-bigquery-core >=2.0.0,<4
         - google-cloud-bigquery-storage >=2.6.3,<3
         - google-cloud-core >=2.0.0,<3
-        - google-cloud-bigtable >=2.42.0,<3
+        - google-cloud-bigtable >=2.44.0,<3
         - google-cloud-build >=3.35.0,<4
         - google-cloud-spanner >=3.0.0,<4
         - google-cloud-dlp >=3.0.0,<4
