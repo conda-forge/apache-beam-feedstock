@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: apache-beam
-  version: "2.77.0"
+  version: "2.78.0"
   noarch_build: linux and x86_64 and python == ${{ python_min }}
 
 recipe:
@@ -11,7 +11,7 @@ recipe:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/apache_beam-${{ version }}.tar.gz
-  sha256: 67ec5cf4610b28cc235957d7ed8890acd2dccd58f256b90c1565cbb57b32e461
+  sha256: 88c7a003d6cd89c15320c46f33b73e59ef71c6794be78e70aed158a3ca2db9c6
 
 build:
   skip: win or python >= "3.15"
@@ -42,7 +42,9 @@ outputs:
             - pyyaml >=3.12,<7.0.0
             - jinja2 >=2.7.1,<4.0.0
             - yapf ==0.43.0
-            - numpy >=1.14.3,<2.5.0
+            - if: match(python, "<3.12")
+              then: numpy >=1.23.2,<2.5.0
+              else: numpy >=1.23.2,<2.6.0
             - if: match(python, "<3.13")
               then: grpcio-tools ==1.62.1
             - if: match(python, ">=3.13") and match(python, "<3.14")
@@ -65,24 +67,28 @@ outputs:
         - if: match(python, ">=3.14")
           then: grpcio-tools ==1.78.0
         - mypy-protobuf ==3.5.0
-        - distlib ==0.4.3
-        - numpy >=1.14.3,<2.5.0
+        - distlib ==0.4.4
+        - if: match(python, "<3.12")
+          then: numpy >=1.23.2,<2.5.0
+          else: numpy >=1.23.2,<2.6.0
         - cython >=3.2.6,<4
         - pyyaml >=3.12,<7.0.0
         - jinja2 >=2.7.1,<4.0.0
         - yapf ==0.43.0
       run:
         - python
-        - cryptography >=39.0.0,<51.0.0
+        - cryptography >=50.0.0
         - fastavro >=0.23.6,<2
         - fasteners >=0.3,<1.0
         - grpcio >=1.33.1,<2,!=1.48.0,!=1.59.*,!=1.60.*,!=1.61.*,!=1.62.0,!=1.62.1,!=1.66.*,!=1.67.*,!=1.68.*,!=1.69.*,!=1.70.*
         - httplib2 >=0.8,<1.0.0
         - jsonpickle >=3.0.4,<5.0.0
-        - numpy >=1.14.3,<2.5.0
+        - if: match(python, "<3.12")
+          then: numpy >=1.23.2,<2.5.0
+          else: numpy >=1.23.2,<2.6.0
         - objsize >=0.6.1,<0.8.0
         - packaging >=22.0
-        - pillow >=12.1.1,<13
+        - pillow >=12.1.1,<14
         - pymongo >=3.8.0,<5.0.0
         - proto-plus >=1.7.1,<2
         - protobuf >=3.20.3,<7.0.0.dev0,!=4.0.*,!=4.21.*,!=4.22.0,!=4.23.*,!=4.24.*
@@ -150,7 +156,7 @@ outputs:
       name: ${{ name }}-with-dill
     build:
       # noarch so just build it once
-      skip: not (linux and x86_64) or match(python, "!=3.10")
+      skip: not (linux and x86_64) or not match(python, python_min ~ ".*")
       noarch: python
     requirements:
       host:
@@ -172,7 +178,7 @@ outputs:
       name: ${{ name }}-with-gcp
     build:
       # noarch so just build it once
-      skip: not (linux and x86_64) or match(python, "!=3.10")
+      skip: not (linux and x86_64) or not match(python, python_min ~ ".*")
       noarch: python
     requirements:
       host:
@@ -190,13 +196,13 @@ outputs:
         - google-cloud-datastore >=2.0.0,<3
         - google-cloud-pubsub >=2.1.0,<3
         # google-cloud-pubsublite was removed from the gcp extra upstream in 2.75.0
-        - google-cloud-storage >=2.18.2,<4
+        - google-cloud-storage >=3.0.0,<4
         - google-cloud-resource-manager >=1.12.0,<2
         - google-cloud-dataflow-client >=0.13.0,<0.14.0
         - google-cloud-bigquery-core >=2.0.0,<4
         - google-cloud-bigquery-storage >=2.6.3,<3
         - google-cloud-core >=2.0.0,<3
-        - google-cloud-bigtable >=2.44.0,<3
+        - google-cloud-bigtable >=2.44.0,<2.48.0
         - google-cloud-build >=3.35.0,<4
         - google-cloud-spanner >=3.0.0,<4
         - google-cloud-dlp >=3.0.0,<4
@@ -227,7 +233,7 @@ outputs:
       name: ${{ name }}-with-aws
     build:
       # noarch so just build it once
-      skip: not (linux and x86_64) or match(python, "!=3.10")
+      skip: not (linux and x86_64) or not match(python, python_min ~ ".*")
       noarch: python
     requirements:
       host:
@@ -249,7 +255,7 @@ outputs:
       name: ${{ name }}-with-azure
     build:
       # noarch so just build it once
-      skip: not (linux and x86_64) or match(python, "!=3.10")
+      skip: not (linux and x86_64) or not match(python, python_min ~ ".*")
       noarch: python
     requirements:
       host:
@@ -273,7 +279,7 @@ outputs:
       name: ${{ name }}-with-dataframe
     build:
       # noarch so just build it once
-      skip: not (linux and x86_64) or match(python, "!=3.10")
+      skip: not (linux and x86_64) or not match(python, python_min ~ ".*")
       noarch: python
     requirements:
       host:
@@ -281,7 +287,7 @@ outputs:
       run:
         - python >=${{ python_min }}
         - ${{ pin_subpackage(name, upper_bound='x.x.x.x.x.x') }}
-        - pandas >=1.4.3,<2.4,!=1.5.0,!=1.5.1
+        - pandas >=2.2.2,<2.4
     tests:
       - python:
           imports:
@@ -295,7 +301,7 @@ outputs:
       name: ${{ name }}-with-dask
     build:
       # noarch so just build it once
-      skip: not (linux and x86_64) or match(python, "!=3.10")
+      skip: not (linux and x86_64) or not match(python, python_min ~ ".*")
       noarch: python
     requirements:
       host:
@@ -318,7 +324,7 @@ outputs:
       name: ${{ name }}-with-yaml
     build:
       # noarch so just build it once
-      skip: not (linux and x86_64) or match(python, "!=3.10")
+      skip: not (linux and x86_64) or not match(python, python_min ~ ".*")
       noarch: python
     requirements:
       host:
@@ -330,7 +336,7 @@ outputs:
         - jinja2 >=3.0,<3.2
         - virtualenv-clone >=0.5,<1.0
         - jsonschema >=4.0.0,<5.0.0
-        - pandas >=1.4.3,<2.4,!=1.5.0,!=1.5.1
+        - pandas >=2.2.2,<2.4
         # upstream 2.75.0 swapped js2py for quickjs-ng, which is not available on
         # conda-forge, so the yaml JS UDF runtime is omitted here
     tests:
@@ -346,7 +352,7 @@ outputs:
       name: ${{ name }}-with-torch
     build:
       # noarch so just build it once
-      skip: not (linux and x86_64) or match(python, "!=3.10")
+      skip: not (linux and x86_64) or not match(python, python_min ~ ".*")
       noarch: python
     requirements:
       host:
@@ -354,7 +360,7 @@ outputs:
       run:
         - python >=${{ python_min }}
         - ${{ pin_subpackage(name, upper_bound='x.x.x.x.x.x') }}
-        - pytorch >=1.9.0,<2.8.0
+        - pytorch >=2.3.0,<2.15.0
     tests:
       - python:
           imports:
@@ -368,7 +374,7 @@ outputs:
       name: ${{ name }}-with-tensorflow
     build:
       # noarch so just build it once
-      skip: not (linux and x86_64) or match(python, "!=3.10")
+      skip: not (linux and x86_64) or not match(python, python_min ~ ".*")
       noarch: python
     requirements:
       host:
@@ -376,7 +382,7 @@ outputs:
       run:
         - python >=${{ python_min }}
         - ${{ pin_subpackage(name, upper_bound='x.x.x.x.x.x') }}
-        - tensorflow >=2.12rc1,<2.22
+        - tensorflow >=2.16.0,<2.22
         - absl-py >=0.12.0
     tests:
       - python:
@@ -391,7 +397,7 @@ outputs:
       name: ${{ name }}-with-transformers
     build:
       # noarch so just build it once
-      skip: not (linux and x86_64) or match(python, "!=3.10")
+      skip: not (linux and x86_64) or not match(python, python_min ~ ".*")
       noarch: python
     requirements:
       host:
@@ -399,9 +405,9 @@ outputs:
       run:
         - python >=${{ python_min }}
         - ${{ pin_subpackage(name, upper_bound='x.x.x.x.x.x') }}
-        - transformers >=4.28.0,<4.56.0
+        - transformers >=4.41.0,<5.21.0,!=4.56.*
         - tensorflow >=2.12.0
-        - pytorch >=1.9.0,<2.12.0
+        - pytorch >=2.3.0,<2.12.0
     tests:
       - python:
           imports:
@@ -415,7 +421,7 @@ outputs:
       name: ${{ name }}-with-tensorflow-hub
     build:
       # noarch so just build it once
-      skip: not (linux and x86_64) or match(python, "!=3.10")
+      skip: not (linux and x86_64) or not match(python, python_min ~ ".*")
       noarch: python
     requirements:
       host:
@@ -423,7 +429,8 @@ outputs:
       run:
         - python >=${{ python_min }}
         - ${{ pin_subpackage(name, upper_bound='x.x.x.x.x.x') }}
-        - tensorflow-hub >=0.14.0,<0.16.0
+        - tensorflow-hub >=0.16.1,<0.17
+        - setuptools <82
     tests:
       - python:
           imports:
