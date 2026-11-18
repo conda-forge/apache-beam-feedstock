@@ -42,7 +42,9 @@ outputs:
             - pyyaml >=3.12,<7.0.0
             - jinja2 >=2.7.1,<4.0.0
             - yapf ==0.43.0
-            - numpy >=1.14.3,<2.5.0
+            - if: match(python, "<3.12")
+              then: numpy >=1.23.2,<2.5.0
+              else: numpy >=1.23.2,<2.6.0
             - if: match(python, "<3.13")
               then: grpcio-tools ==1.62.1
             - if: match(python, ">=3.13") and match(python, "<3.14")
@@ -154,7 +156,7 @@ outputs:
       name: ${{ name }}-with-dill
     build:
       # noarch so just build it once
-      skip: not (linux and x86_64) or match(python, "!=3.10")
+      skip: not (linux and x86_64) or not match(python, python_min ~ ".*")
       noarch: python
     requirements:
       host:
@@ -176,7 +178,7 @@ outputs:
       name: ${{ name }}-with-gcp
     build:
       # noarch so just build it once
-      skip: not (linux and x86_64) or match(python, "!=3.10")
+      skip: not (linux and x86_64) or not match(python, python_min ~ ".*")
       noarch: python
     requirements:
       host:
@@ -231,7 +233,7 @@ outputs:
       name: ${{ name }}-with-aws
     build:
       # noarch so just build it once
-      skip: not (linux and x86_64) or match(python, "!=3.10")
+      skip: not (linux and x86_64) or not match(python, python_min ~ ".*")
       noarch: python
     requirements:
       host:
@@ -253,7 +255,7 @@ outputs:
       name: ${{ name }}-with-azure
     build:
       # noarch so just build it once
-      skip: not (linux and x86_64) or match(python, "!=3.10")
+      skip: not (linux and x86_64) or not match(python, python_min ~ ".*")
       noarch: python
     requirements:
       host:
@@ -277,7 +279,7 @@ outputs:
       name: ${{ name }}-with-dataframe
     build:
       # noarch so just build it once
-      skip: not (linux and x86_64) or match(python, "!=3.10")
+      skip: not (linux and x86_64) or not match(python, python_min ~ ".*")
       noarch: python
     requirements:
       host:
@@ -299,7 +301,7 @@ outputs:
       name: ${{ name }}-with-dask
     build:
       # noarch so just build it once
-      skip: not (linux and x86_64) or match(python, "!=3.10")
+      skip: not (linux and x86_64) or not match(python, python_min ~ ".*")
       noarch: python
     requirements:
       host:
@@ -322,7 +324,7 @@ outputs:
       name: ${{ name }}-with-yaml
     build:
       # noarch so just build it once
-      skip: not (linux and x86_64) or match(python, "!=3.10")
+      skip: not (linux and x86_64) or not match(python, python_min ~ ".*")
       noarch: python
     requirements:
       host:
@@ -350,7 +352,7 @@ outputs:
       name: ${{ name }}-with-torch
     build:
       # noarch so just build it once
-      skip: not (linux and x86_64) or match(python, "!=3.10")
+      skip: not (linux and x86_64) or not match(python, python_min ~ ".*")
       noarch: python
     requirements:
       host:
@@ -372,7 +374,7 @@ outputs:
       name: ${{ name }}-with-tensorflow
     build:
       # noarch so just build it once
-      skip: not (linux and x86_64) or match(python, "!=3.10")
+      skip: not (linux and x86_64) or not match(python, python_min ~ ".*")
       noarch: python
     requirements:
       host:
@@ -395,7 +397,7 @@ outputs:
       name: ${{ name }}-with-transformers
     build:
       # noarch so just build it once
-      skip: not (linux and x86_64) or match(python, "!=3.10")
+      skip: not (linux and x86_64) or not match(python, python_min ~ ".*")
       noarch: python
     requirements:
       host:
@@ -419,7 +421,7 @@ outputs:
       name: ${{ name }}-with-tensorflow-hub
     build:
       # noarch so just build it once
-      skip: not (linux and x86_64) or match(python, "!=3.10")
+      skip: not (linux and x86_64) or not match(python, python_min ~ ".*")
       noarch: python
     requirements:
       host:
